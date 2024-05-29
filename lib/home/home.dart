@@ -11,7 +11,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final _controller = TextEditingController();
   List toDoList = [
-    ['do code', true],
+    // ['do code', true],
 
   ];
 
@@ -20,8 +20,10 @@ class _HomePageState extends State<HomePage> {
       toDoList[index][1] = !toDoList[index][1];
     });
   }
-
   void saveNewTask() {
+    if (_controller.text.trim().isEmpty) {
+      return ;
+    }
     setState(() {
       toDoList.add([_controller.text, false]);
       _controller.clear();
@@ -40,7 +42,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.deepPurple.shade300,
       appBar: AppBar(
         title: const Text(
-          'Simple Todo',
+          'Todo',
         ),
         centerTitle: true,
         backgroundColor: Colors.deepPurple,
